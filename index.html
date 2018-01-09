@@ -24,6 +24,7 @@
 		
 		<script>
 			var zombie_map;
+			var old_position;
 			var data = `-33.430445230338584 151.31510227918625 zombie.png
 			-33.43017885419188 151.31516128778458 zombie.png
 			-33.4300333542707 151.31468385457993 zombie.png
@@ -36,8 +37,12 @@
 		function initMap() {
 
             zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
-            zoom: 18,
+            zoom: 14,
             center: {lat: -33.430416, lng: 151.314980}});
+            
+            var old_position = new google.maps.Marker({
+			position: {lat: -33.430416, lng: 151.314980 },
+			map:zombie_map});
 			
 			for(var i=0; i < markers.length; i++){
 				var marker_data = markers[i].trim();
@@ -57,12 +62,14 @@
 			else {alert("Geolocation doesn't work in your browser");}}
 			
 		function set_my_position(position){
+			old_position.setMap(null);
 			var pos = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
 			var emoji = "player.png";
 			var marker = new google.maps.Marker({
 				position: pos,
 				map: zombie_map,
-				icon: emoji});}
+				icon: emoji});
+				old_position = marker;}
 		
 		</script>
 	</body>
