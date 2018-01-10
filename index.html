@@ -30,7 +30,7 @@
         // SET YOUR OWN CENTER OF THE MAP
         zombie_map = new google.maps.Map(document.getElementById('zombie_map'), {
             zoom: 10,
-            center: {lat: 0, lng: 0}
+            center: {lat: -33.430416, lng: 151.314980}
         });
         // Get geolocation
         if( navigator.geolocation) {
@@ -57,7 +57,7 @@
         console.log(all_markers);
         // SET YOUR OWN OLD POSITION (same as map center)
         old_position = new google.maps.Marker({
-            position: {lat: -33.430416, lng: -33.430416},
+            position: {lat: -33.430416, lng: 151.314980},
             map: zombie_map
         })
     }
