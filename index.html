@@ -25,7 +25,7 @@
 		<script>
 			var zombie_map;
 			var old_position;
-			var tolerance = 10;
+			var tolerance = 20;
 			var score
 			var data = `-33.430445230338584 151.31510227918625 zombie.png
 			-33.43017885419188 151.31516128778458 zombie.png
@@ -71,21 +71,18 @@
 				position: pos,
 				map: zombie_map,
 				icon: emoji});
-				old_position = marker;}
-				
-				for (var i = 0; i < all_markers.length; i++) {
+				old_position = marker;
+				for(var i=0; i < all_markers.length; i++){
             var distance = google.maps.geometry.spherical.computeDistanceBetween(pos, all_markers[i].getPosition());
-        if(distance < tolerance){
-            var what_is_it = all_markers[i].getIcon();
-            what_is_it = what_is_it.replace(".png", "");
-            alert("Found the " + what_is_it );
-            all_markers[i].setMap(null);if( what_is_it != "zombie"){
-			score += 10;
-			alert("Your score is " + score);
+            if( distance < tolerance ){
+                console.log("Found it!")
+            }
 			}
-			
-          }
-    }
+				
+				
+		}
+				
+				
 		
 		</script>
 	</body>
