@@ -76,7 +76,10 @@
 				var distance = google.maps.geometry.spherical.computeDistanceBetween(pos, all_markers[i].getPosition());
 				if( distance < tolerance ){
                 console.log("Found it!");
-				alert ("found it");
+				var what_is_it = all_markers[i].getIcon();
+				what_is_it = what_is_it.replace(".png", "");
+				alert("Found the " + what_is_it );
+				all_markers[i].setMap(null);
 				}
 				}
 		}	
